@@ -10,10 +10,6 @@
                             http://www.springframework.org/schema/mvc/spring-mvc.xsd
                             http://www.springframework.org/schema/context
                             http://www.springframework.org/schema/context/spring-context.xsd">
-
-    <!--开启SpringMVC注解的支持-->
-    <mvc:annotation-driven/>
-
     <!-- 2.静态资源默认servlet配置
 		(1)加入对静态资源的处理：js,gif,png
 		(2)允许使用"/"做整体映射
@@ -70,19 +66,25 @@
         </property>
     </bean>
 
-    <!-- 使用fastJson来支持JSON数据格式 -->
-    <bean id="fastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-        <property name="supportedMediaTypes">
-            <list>
-                <value>text/html;charset=UTF-8</value>
-                <value>application/json</value>
-            </list>
-        </property>
-        <property name="features">
-            <list>
-                <value>WriteMapNullValue</value>
-                <value>QuoteFieldNames</value>
-            </list>
-        </property>
+    <!--验证器-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <!--注入hibernate的验证器-->
+        <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
     </bean>
+    <!--配置错误信息文件-->
+    <bean id="messageSources" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <!--支援文件名-->
+        <property name="basenames">
+            <list>
+                <value>classpath:messageSources</value>
+            </list>
+        </property>
+        <!--字符编码-->
+        <property name="fileEncodings" value="utf-8"/>
+        <!--对资源文件缓存时间，秒-->
+        <property name="cacheSeconds" value="120"/>
+    </bean>
+
+    <!--开启SpringMVC注解的支持-->
+    <mvc:annotation-driven validator="validator"/>
 </beans>

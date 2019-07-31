@@ -31,14 +31,17 @@
         <!--注入数据库连接池-->
         <property name="dataSource" ref="dataSource"/>
         <!--配置mybatis-->
-        <property name="configLocation" value="classpath:"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!--配置别名-->
         <property name="typeAliasesPackage" value="com.aLeaf.entity"/>
         <!--配置sql配置文件:mapper需要的xml文件-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
+
     <!--配置扫描DAO接口包，动态是现DAO接口，注入至spring容器中-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--扫描Mapper-->
+        <property name="basePackage" value="com.aLeaf.dao"/>
         <!--注入SqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
