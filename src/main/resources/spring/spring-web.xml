@@ -71,20 +71,19 @@
         <!--注入hibernate的验证器-->
         <property name="providerClass"  value="org.hibernate.validator.HibernateValidator"/>
     </bean>
-    <!--配置错误信息文件-->
-    <bean id="messageSources" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <!--支援文件名-->
-        <property name="basenames">
-            <list>
-                <value>classpath:messageSources</value>
-            </list>
-        </property>
-        <!--字符编码-->
-        <property name="fileEncodings" value="utf-8"/>
-        <!--对资源文件缓存时间，秒-->
-        <property name="cacheSeconds" value="120"/>
-    </bean>
 
     <!--开启SpringMVC注解的支持-->
     <mvc:annotation-driven validator="validator"/>
+
+    <!--全局错误处理器-->
+    <bean class="com.aLeaf.exception.customExceptionResolver"/>
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <!--多个拦截器顺序执行-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.aLeaf.interceptor.interceptorLogin"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

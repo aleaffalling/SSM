@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aLeaf.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.aLeaf.entity.User">
-    <id column="u_id" jdbcType="INTEGER" property="uId" />
-    <result column="u_name" jdbcType="VARCHAR" property="uName" />
-    <result column="u_sex" jdbcType="INTEGER" property="uSex" />
-    <result column="u_password" jdbcType="VARCHAR" property="uPassword" />
+    <id column="u_id" jdbcType="INTEGER" property="u_id" />
+    <result column="u_name" jdbcType="VARCHAR" property="u_name" />
+    <result column="u_sex" jdbcType="INTEGER" property="u_sex" />
+    <result column="u_password" jdbcType="VARCHAR" property="u_password" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -86,11 +86,11 @@
     select 
     <include refid="Base_Column_List" />
     from user
-    where u_id = #{uId,jdbcType=INTEGER}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
-    where u_id = #{uId,jdbcType=INTEGER}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.aLeaf.entity.UserExample">
     delete from user
@@ -101,37 +101,37 @@
   <insert id="insert" parameterType="com.aLeaf.entity.User">
     insert into user (u_id, u_name, u_sex, 
       u_password)
-    values (#{uId,jdbcType=INTEGER}, #{uName,jdbcType=VARCHAR}, #{uSex,jdbcType=INTEGER}, 
-      #{uPassword,jdbcType=VARCHAR})
+    values (#{u_id,jdbcType=INTEGER}, #{u_name,jdbcType=VARCHAR}, #{u_sex,jdbcType=INTEGER},
+      #{u_password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.aLeaf.entity.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
+      <if test="u_id != null">
         u_id,
       </if>
-      <if test="uName != null">
+      <if test="u_name != null">
         u_name,
       </if>
-      <if test="uSex != null">
+      <if test="u_sex != null">
         u_sex,
       </if>
-      <if test="uPassword != null">
+      <if test="u_password != null">
         u_password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uId != null">
-        #{uId,jdbcType=INTEGER},
+      <if test="u_id != null">
+        #{u_id,jdbcType=INTEGER},
       </if>
-      <if test="uName != null">
-        #{uName,jdbcType=VARCHAR},
+      <if test="u_name != null">
+        #{u_name,jdbcType=VARCHAR},
       </if>
-      <if test="uSex != null">
-        #{uSex,jdbcType=INTEGER},
+      <if test="u_sex != null">
+        #{u_sex,jdbcType=INTEGER},
       </if>
-      <if test="uPassword != null">
-        #{uPassword,jdbcType=VARCHAR},
+      <if test="u_password != null">
+        #{u_password,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,17 +144,17 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user
     <set>
-      <if test="record.uId != null">
-        u_id = #{record.uId,jdbcType=INTEGER},
+      <if test="record.u_id != null">
+        u_id = #{record.u_id,jdbcType=INTEGER},
       </if>
-      <if test="record.uName != null">
-        u_name = #{record.uName,jdbcType=VARCHAR},
+      <if test="record.u_name != null">
+        u_name = #{record.u_name,jdbcType=VARCHAR},
       </if>
-      <if test="record.uSex != null">
-        u_sex = #{record.uSex,jdbcType=INTEGER},
+      <if test="record.u_sex != null">
+        u_sex = #{record.u_sex,jdbcType=INTEGER},
       </if>
-      <if test="record.uPassword != null">
-        u_password = #{record.uPassword,jdbcType=VARCHAR},
+      <if test="record.u_password != null">
+        u_password = #{record.u_password,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,10 +163,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user
-    set u_id = #{record.uId,jdbcType=INTEGER},
-      u_name = #{record.uName,jdbcType=VARCHAR},
-      u_sex = #{record.uSex,jdbcType=INTEGER},
-      u_password = #{record.uPassword,jdbcType=VARCHAR}
+    set u_id = #{record.u_id,jdbcType=INTEGER},
+      u_name = #{record.u_name,jdbcType=VARCHAR},
+      u_sex = #{record.u_sex,jdbcType=INTEGER},
+      u_password = #{record.u_password,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,23 +174,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.aLeaf.entity.User">
     update user
     <set>
-      <if test="uName != null">
-        u_name = #{uName,jdbcType=VARCHAR},
+      <if test="u_name != null">
+        u_name = #{u_name,jdbcType=VARCHAR},
       </if>
-      <if test="uSex != null">
-        u_sex = #{uSex,jdbcType=INTEGER},
+      <if test="u_sex != null">
+        u_sex = #{u_sex,jdbcType=INTEGER},
       </if>
-      <if test="uPassword != null">
-        u_password = #{uPassword,jdbcType=VARCHAR},
+      <if test="u_password != null">
+        u_password = #{u_password,jdbcType=VARCHAR},
       </if>
     </set>
-    where u_id = #{uId,jdbcType=INTEGER}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aLeaf.entity.User">
     update user
-    set u_name = #{uName,jdbcType=VARCHAR},
-      u_sex = #{uSex,jdbcType=INTEGER},
-      u_password = #{uPassword,jdbcType=VARCHAR}
-    where u_id = #{uId,jdbcType=INTEGER}
+    set u_name = #{u_name,jdbcType=VARCHAR},
+      u_sex = #{u_sex,jdbcType=INTEGER},
+      u_password = #{u_password,jdbcType=VARCHAR}
+    where u_id = #{u_id,jdbcType=INTEGER}
   </update>
 </mapper>

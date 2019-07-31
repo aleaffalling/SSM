@@ -7,7 +7,7 @@ public class User {
     private Integer u_id;
 
     @NotNull(message = "不能为空")
-    @Size(min = 4, max = 16,message = "{user.name.length.error}")
+    @Size(min = 2, max = 16,message = "用户名长度是2-10之间")
     private String u_name;
 
     private Integer u_sex;
