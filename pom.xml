@@ -19,7 +19,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <junit.version>4.12</junit.version>
     <spring.version>4.1.7.RELEASE</spring.version>
-    <mybatis.version>3.4.5</mybatis.version>
+    <mybatis.version>3.5.6</mybatis.version>
     <aspectjweaver.version>1.8.4</aspectjweaver.version>
     <mybatisPageHelper.version>4.1.6</mybatisPageHelper.version>
     <mybatisSpring.version>1.3.0</mybatisSpring.version>
