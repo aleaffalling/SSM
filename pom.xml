@@ -23,7 +23,7 @@
     <aspectjweaver.version>1.8.4</aspectjweaver.version>
     <mybatisPageHelper.version>4.1.6</mybatisPageHelper.version>
     <mybatisSpring.version>1.3.0</mybatisSpring.version>
-    <mysql.version>5.1.46</mysql.version>
+    <mysql.version>8.0.28</mysql.version>
     <c3p0.version>0.9.1.2</c3p0.version>
     <alibabaFastJson.version>1.1.41</alibabaFastJson.version>
     <jstl.version>1.2</jstl.version>
